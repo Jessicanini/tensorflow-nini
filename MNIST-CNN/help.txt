@@ -1,0 +1,5 @@
+#卷积神经网络
+#可参考理解 
+解释了卷积网络的基本原理 https://www.cnblogs.com/charlotte77/p/7759802.html
+解释了反向传播的计算 http://www.cnblogs.com/charlotte77/p/5629865.html 
+通俗解释卷积网络 https://blog.csdn.net/Loving_Forever_/article/details/52389862
