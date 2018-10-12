@@ -1,0 +1,27 @@
+#涉及知识点：前馈神经网络
+说明网站可以参考：
+1）前馈神经网络与反向传播算法（推导过程）https://blog.csdn.net/u010089444/article/details/52555567
+2）人工神经网络之前馈神经网络 https://blog.csdn.net/qq_36330643/article/details/74852593
+
+#py文件简易说明：
+
+Mnist.py构建了一个前馈神经网络，在其中定义了如何计算loss等函数，作为一个接口被后续py文件使用
+文件代码官方注释说明如下：
+"""Builds the MNIST network.
+Implements the inference/loss/training pattern for model building.
+1. inference() - Builds the model as far as required for running the network
+forward to make predictions.
+2. loss() - Adds to the inference model the layers required to generate loss.
+3. training() - Adds to the loss model the Ops required to generate and
+apply gradients.
+“””
+最后，程序返回包含了训练操作（training op）输出结果的Tensor
+PS:个人理解它相当于一个抽象类
+
+Fully_connected_feed.py文件构建全连接的神经网络，用来训练MNIST数据集
+
+"""Trains and Evaluates the MNIST network using a feed dictionary."""
+PS：在这个网络中定义输入参数和用户如何训练的代码（如次数，分割集等）实例化网络进行训练
+但是，本教程中的例子要更为复杂一点，原因是我们必须把输入的数据根据每一步的情况进行切分，以匹配之前生成的占位符。
+在训练循环（training loop）的后续步骤中，传入的整个图像和标签数据集会被切片，以符合每一个操作所设置的batch_size 值，占位符操作将会填补以符合这个batch_size 值。然后使用feed_dict 参数，将数据传入sess.run() 函数。
+向图表提供反馈：执行每一步时，我们的代码会生成一个反馈字典（feed dictionary），其中包含对应步骤中训练所要使用的例子，这些例子的哈希键就是其所代表的占位符操作
